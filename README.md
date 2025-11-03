@@ -32,3 +32,37 @@ jwt.mydomain.com - jwt server(domain)
 4) ### uncomment sections with 443 in nginx.conf
 5) ### I prefer to comment certbot in docker-compose.yml 
 6) ### docker-compose up -d
+
+
+### Iptables
+#### LiveKit
+```
+sudo iptables -A INPUT -p tcp --dport 7880 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 7880 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 7881 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 7881 -j ACCEPT
+sudo iptables -A INPUT -p udp --match multiport --dports 50000:50020 -j ACCEPT
+```
+####  Coturn
+```
+sudo iptables -A INPUT -p udp --dport 3478 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 3478 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 5349 -j ACCEPT
+sudo iptables -A INPUT -p udp --match multiport --dports 49152:49201 -j ACCEPT
+```
+####  Nginx/Matrix
+```sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8448 -j ACCEPT
+
+sudo service netfilter-persistent save
+```
+
+### Perms for data-media (all)
+```
+sudo apt update
+sudo apt install acl -y
+sudo setfacl -R -m g::rwx ./synapse-data
+sudo setfacl -R -d -m g::rwx ./synapse-data
+getfacl ./synapse-data
+```
