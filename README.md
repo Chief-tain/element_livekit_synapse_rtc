@@ -1,6 +1,6 @@
 # friends-in-matrix
 
-Grep and replace on repository
+Find and replace in the repository
 
 1 api_keys
 ```
@@ -11,28 +11,40 @@ strong_password_here_12345
 ```
 2 ip
 ```
-44.333.222.111 - change ip in yours. 
+44.333.222.111 - Replace the IP with your own
 ```
 
 3 domains
 ```
-mydomain.com - matrix server(domain)
-chat.mydomain.com - matrix chat server(domain)
-livekit.mydomain.com - livekit server(domain)
-jwt.mydomain.com - jwt server(domain)
+syn.mydomain.com - synapse matrix server
+chat.mydomain.com - matrix chat server
+mas.mydomain.com - auth server
+jwt.mydomain.com - jwt server
+madmim.mydomain.com - admin server
 ```
 
-## Disclaimer: It's not ideal. It works, but it's have problems, i think in default.conf: Excessive parts of nginx.conf and docker-compose.yml..
+## Disclaimer: This setup is not ideal."
 
-1) ### uncomment certbot section in docker-compose.yml 
-2) ### uncomment section with port 80 and comment others in nginx.conf
-    Because of certbot we need to use port 80. In 443 sections we use paths to certs, that at that moment doesn't exist.
-3) ### create by certbot certs. 
-    ```docker-compose run --rm certbot certonly --webroot -w /var/www/certbot  -d mydomain.com -d chat.mydomain.com -d call.mydomain.com -d livekit.mydomain.com -d jwt.mydomain.com --email email@gmail.com --agree-tos --non-interactive --expand```
-4) ### uncomment sections with 443 in nginx.conf
-5) ### I prefer to comment certbot in docker-compose.yml 
+1) ### Uncomment the certbot section in docker-compose.yml 
+2) ### Temporarily enable the port 80 block in nginx.conf and disable the 443 blocks. Certbot requires port 80; the certificate paths used in the 443 blocks do not exist yet.
+3) ### Create certificates with certbot
+```bash 
+    docker-compose run --rm certbot certonly --webroot -w /var/www/certbot  -d mydomain.com
+    -d chat.mydomain.com -d mas.mydomain.com -d madmim.mydomain.com 
+    -d jwt.mydomain.com --email email@gmail.com --agree-tos --non-interactive --expand
+```
+4) ### Re-enable the 443 sections in nginx.conf and point them to the obtained certificates.
+5) ### I prefer to comment certbot section in docker-compose.yml
 6) ### docker-compose up -d
-
+7) ### create database for mas
+```bash
+docker-compose exec -it postgres bash
+createdb mas -U synapse
+```
+8) #### create first admin user
+```bash
+docker exec -it matrix-mas mas-cli manage register-user
+```
 
 ### Iptables
 #### LiveKit
@@ -65,4 +77,22 @@ sudo apt install acl -y
 sudo setfacl -R -m g::rwx ./synapse-data
 sudo setfacl -R -d -m g::rwx ./synapse-data
 getfacl ./synapse-data
+```
+
+#### generate config with secrets for mas and replace secrets section
+```bash
+docker run ghcr.io/element-hq/matrix-authentication-service config generate > config.yaml
+```
+### Create admin user
+```bash
+docker exec -it matrix-mas mas-cli manage register-user
+```
+other users U can create in madmim.mydomain.com
+
+
+### delete containers and database
+```
+docker-compose rm -sf
+docker volume ls
+docker volume rm <your_folder_name>_postgres-data
 ```

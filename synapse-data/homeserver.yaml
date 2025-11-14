@@ -1,5 +1,5 @@
-server_name: "mydomain.com"
-public_baseurl: "https://mydomain.com"
+server_name: "syn.mydomain.com"
+public_baseurl: "https://syn.mydomain.com"
 
 listeners:
   - port: 8008
@@ -21,18 +21,22 @@ listeners:
 
 report_stats: false
 
-# Включаем регистрацию для локальной среды. На проде выключите и используйте ручную регистрацию.
-enable_registration: true
 # Замените значением из переменной окружения/секрета в проде
 registration_shared_secret: "please_change_me"
 
 allow_guest_access: false
 
 media_store_path: "/data/media_store"
-enable_registration_without_verification: true
+
 suppress_key_server_warning: true
 
+matrix_authentication_service:
+  enabled: true
+  endpoint: http://mas:8080/
+  secret: "RWiREqVkAXARyhnDVAgXvDHkHlqT1s11"
+
 experimental_features:
+  msc4186_enabled: true
   # MSC3266: Room summary API. Used for knocking over federation.
   msc3266_enabled: true
   # MSC4222: Needed for syncv2 state_after. Allows clients to correctly track room state.
@@ -55,6 +59,18 @@ rc_delayed_event_mgmt:
   # Needs to match at least the heartbeat frequency (5s = 0.2/s) plus headroom.
   per_second: 1.0 # Increased from example's 1 to be safer
   burst_count: 20
+
+rc_login:
+  address:
+    per_second: 0.5
+    burst_count: 10
+  account:
+    per_second: 0.5
+    burst_count: 10
+  failed_attempts:
+    per_second: 0.5
+    burst_count: 10
+
 
 # Конфигурация PostgreSQL
 database:

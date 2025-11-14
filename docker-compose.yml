@@ -121,6 +121,25 @@ services:
     networks:
       - matrix-net
 
+  synapse-admin:
+    image: oci.element.io/element-admin:latest
+    container_name: synapse-admin
+    restart: unless-stopped
+    environment:
+      - SERVER_NAME=syn.mydomain.com
+    networks:
+      - matrix-net
+
+  mas:
+    image: ghcr.io/element-hq/matrix-authentication-service:latest
+    restart: unless-stopped
+    container_name: matrix-mas
+    volumes:
+      - ./mas/config.yaml:/config.yaml
+    command: ["server", "--config", "/config.yaml"]
+    networks:
+      - matrix-net
+
 networks:
   matrix-net:
     driver: bridge

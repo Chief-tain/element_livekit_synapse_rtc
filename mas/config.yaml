@@ -1,0 +1,160 @@
+# ==============================
+#  Matrix Authentication Service
+# ==============================
+http:
+  listeners:
+  - name: web
+    resources:
+      - name: discovery
+      - name: human
+      - name: oauth
+      - name: compat
+      - name: graphql
+      - name: assets
+      - name: adminapi
+    binds:
+    - address: '[::]:8080'
+    proxy_protocol: false
+
+  - name: internal
+    resources:
+    - name: health
+    binds:
+    - host: 127.0.0.1
+      port: 8081
+    proxy_protocol: false
+
+  trusted_proxies:
+  - 192.168.0.0/16
+  - 172.16.0.0/12
+  - 10.0.0.0/8
+  - 127.0.0.1/8
+  - fd00::/8
+  - ::1/128
+  public_base: https://mas.mydomain.com/
+  issuer: https://mas.mydomain.com/
+
+secrets:
+  encryption: 01b9f02459459b9550e3556d8c59d4b1ad5f3d3d25360a33e84c37936400212d
+  keys:
+  - key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpQIBAAKCAQEA0etPaF9D0k3ouOfNzDBNca24bULincOuCp77p6Nm5e/Wh8e+
+      XwuKoVy/CIsfqB4N3StTy/vyPWAa5dhxjiINn5jK5gpi3cM0IOE0H4zjTLOXnVKy
+      1XpuTgtTWpoCKffOggzalyEFItEBUP+rDF8GNme/+v4vkRl3aZe4h7udUUAuiibe
+      3xcjQZ9izkwo+TDfy+a2fUgTRjHcSP8K47IWDphSxF+EIB2olGb+bFIbFMJwD2Jr
+      CfvLP2tLGBXjJWAyKOBNKgqVH6SThdd/B4tcPDmQDjA6iBjPMMIKM6/pCB2HwmkE
+      fegp8VS82CPinB+o65FuHvM3byiJ7BBAJ3ES6QIDAQABAoIBAQCwFC0bYy1Ebk1T
+      LD0XlTygqhMUsxHbO5P1HL4CM7HQFYlhg05P8yJpj5490FTRc8Q1TG6Rn9flW4O0
+      YAWAL1g2Ere+ld+wHFjRa5WJEWhnogz+zatsHbIAjMdyK9S81zvFInsIYY4pUh9E
+      jfAwBFT1tbj3E9daYn4jeDw0vk6LI0H52qW6r2ZoJaWxXKqj642Iu3/cT+n//sjh
+      atsnvOtRpDtSiC8S+m3NvXyOUflXJjbb1YxEvvQwnL+SYLiHke4g/WA7XMY2tof2
+      L/q61Xl05bDmpxm/CuHu+B70gvKixXOlK0SMeW0CtPV76oviJcVxK4pumYEVKLbc
+      mTOdHEGxAoGBAOpsWUtmwbc4YfuvzBu8vf6qJqikPBNh5uWQH8gfaKsSu/9KUphZ
+      kiUsyPxBXsj4t8XphHn6Un7MMSmH51PQ+h5LDh3Ushr73DSb+iQSQCOyMBWetFyo
+      qpaZP621cmM3ne5Fi7Xw9SKSqsOl1iaJnWlMyfTstWPjF7FuAqK3jieHAoGBAOU9
+      lDRs7aRnz/AmG6FEd5EbJrVZQxuqgZN0UtL9Gc9bPIPNfG/2HO+TJ0PZje6ToiKt
+      kU6Ueu4VmZ2b4PGIi3SWG1lCxObClH+2qFFtJK3KEHSMK6KuxaxkMvYTRXsO61lv
+      ArQERNprrO8wel4S6S/Y96pAZhnRIPolfzlgia4PAoGBAMhSDEAtsA3khX5w7Ecr
+      k2QCfISRy7B4cbnr3ezCQkwl9zahiVEdAZD440sEhX3RZCEgeo9NhJ9L2Br4QopS
+      QtoOIyMEtanvXW4rd6bJXbvjMcnX06J2k0eb71l+eyAjz7ZkAY5ZOPDxSjFkDkri
+      P/xSnSXJ/Ps9fOqm6mOn3TcTAoGBAMatEuhIy8EkE8xfSqz+6N2C+Y5MeWPd54VD
+      WJDxuM/Ek/LrQYDLfZKJJ4ufXmo521hQs1G2T8BOSh+VvGO44pw9iCBZRMt2Mjtp
+      tAE2JYbVTGOmJB9Pd5SMFrq8Qwh/CqwtENuxo3blwTBgBH3Jx/2m/ia4v4R6gikq
+      HFQ+/bQzAoGAcsmLoyaUpEHXbSIh7idbOPUjzjrXeiOV9e//PKXbsAbwRrvPWNyJ
+      8rzq/dwoQLBcDcYI8AVeaE/8jC8EnSoLoWgOIZUAqyjq/UY14aJnePkAXeWqbM75
+      1ZSb/xmxT6YPF4lYsfQRvFu95CBHZR8WG9AlyvewDeVPWF0Bosq6xko=
+      -----END RSA PRIVATE KEY-----
+  - key: |
+      -----BEGIN EC PRIVATE KEY-----
+      MHcCAQEEIG/pOU0btfnpG48/D31X7h5h1vjFxQznla2B1F4c4P7yoAoGCCqGSM49
+      AwEHoUQDQgAEHCAQFBhPX4ty9fpttt/lNE0pZToTvtlCjuPYF4xvxzrWTYNPdYmh
+      HgeooEsy1e80vxi+8/0ksNapE1r2kXSajg==
+      -----END EC PRIVATE KEY-----
+  - key: |
+      -----BEGIN EC PRIVATE KEY-----
+      MIGkAgEBBDC+zeR7Vdx1z03F6x/VkKExH2Q2mSp+4zZxiSDW4vNsdg1VCJze+5qO
+      JdLfX0FXD0agBwYFK4EEACKhZANiAAQZlmUiZe/QwLMnskh5xhnj0tEO9pmSsNGJ
+      /qVZreDwv9JawKGYFpgHyj3CE96xtW3LkJEPLDbRCZR0FLTo9BtYnPwgHufJV8xC
+      xaCpya0aeergiibTbJ/u1+HS8bRFZqQ=
+      -----END EC PRIVATE KEY-----
+  - key: |
+      -----BEGIN EC PRIVATE KEY-----
+      MHQCAQEEINsSc5XgiavrMPuzqUcAz4chQ6HEJt9FpaX5OHFqf4i/oAcGBSuBBAAK
+      oUQDQgAEuMlGCdZQlG/04io10ddOagGEGA+BasD3aiwQuAlLg2N+8d73WTPGPe0d
+      Q0OYF8EIbJvk5Hb2CqXy77cBiy4olQ==
+      -----END EC PRIVATE KEY-----
+
+# ------------------------------
+#  База данных (PostgreSQL)
+# ------------------------------
+
+database:
+  uri: postgresql://synapse:synapse_password@postgres:5432/mas?sslmode=disable
+
+# ------------------------------
+#  Matrix Synapse (делегирование)
+# ------------------------------
+matrix:
+  kind: synapse
+  homeserver: syn.mydomain.com
+  secret: "RWiREqVkAXARyhnDVAgXvDHkHlqT1s11"
+  endpoint: http://synapse:8008
+  database:
+    uri: postgresql://synapse:synapse_password@postgres:5432/synapse?sslmode=disable
+
+clients:
+  - client_id: 0000000000000000000SYNAPSE
+    client_auth_method: client_secret_post
+    client_secret: RWiREqVkAXARyhnDVAgXvDHkHlqT1s11
+    redirect_uris:
+      - https://syn.mydomain.com/_synapse/client/oidc/callback
+#
+#passwords:
+#  enabled: true
+#  schemes:
+#  - version: 1
+#    algorithm: argon2id
+#  minimum_complexity: 3
+
+# ------------------------------
+#  Регистрация пользователей
+# ------------------------------
+account:
+  displayname_change_allowed: true
+  password_registration_enabled: true
+  password_registration_email_required: false
+  password_change_allowed: true
+  password_recovery_enabled: false
+  account_deactivation_allowed: true
+  login_with_email_allowed: false
+  registration_token_required: true
+
+login:
+  # Controls how many login attempts are permitted
+  # based on source IP address.
+  # This can protect against brute force login attempts.
+  per_ip:
+    burst: 3
+    per_second: 0.05
+  per_account:
+    burst: 1800
+    per_second: 0.5
+  registration:
+    burst: 3
+    per_second: 0.0008
+# ------------------------------
+#  UI (логотип, название)
+# ------------------------------
+ui:
+  branding:
+    name: "FF Matrix"
+    # logo: "https://example.com/logo.svg"
+    # favicon: "https://example.com/favicon.ico"
+
+# ------------------------------
+#  Логи
+# ------------------------------
+logging:
+  level: info
+  format: pretty
