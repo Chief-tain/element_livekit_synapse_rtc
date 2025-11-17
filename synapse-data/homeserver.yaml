@@ -1,5 +1,5 @@
-server_name: "syn.mydomain.com"
-public_baseurl: "https://syn.mydomain.com"
+server_name: "syn.private-messages.space"
+public_baseurl: "https://syn.private-messages.space"
 
 listeners:
   - port: 8008
@@ -22,7 +22,7 @@ listeners:
 report_stats: false
 
 # Замените значением из переменной окружения/секрета в проде
-registration_shared_secret: "please_change_me"
+registration_shared_secret: "TD8G45PzkQDVpdm8TH07"
 
 allow_guest_access: false
 
@@ -33,7 +33,7 @@ suppress_key_server_warning: true
 matrix_authentication_service:
   enabled: true
   endpoint: http://mas:8080/
-  secret: "RWiREqVkAXARyhnDVAgXvDHkHlqT1s11"
+  secret: "1QPZW1M0MxHgK7SjNZx7"
 
 experimental_features:
   msc4186_enabled: true
@@ -77,7 +77,7 @@ database:
   name: psycopg2
   args:
     user: synapse
-    password: synapse_password
+    password: ZGm18BB68RfpXrzUJC2j
     database: synapse
     host: postgres
     port: 5432
@@ -88,6 +88,6 @@ database:
 trusted_key_servers:
   - server_name: "matrix.org"
 
-turn_shared_secret: "strong_password_here_12345"
+turn_shared_secret: "TD8G45PzkQDVpdm8TH07"
 turn_user_lifetime: 86400000
 turn_allow_guests: true

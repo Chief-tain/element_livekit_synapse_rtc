@@ -31,58 +31,58 @@ http:
   - 127.0.0.1/8
   - fd00::/8
   - ::1/128
-  public_base: https://mas.mydomain.com/
-  issuer: https://mas.mydomain.com/
+  public_base: https://mas.private-messages.space/
+  issuer: https://mas.private-messages.space/
 
 secrets:
-  encryption: 01b9f02459459b9550e3556d8c59d4b1ad5f3d3d25360a33e84c37936400212d
+  encryption: 8b299ea4a3a488635b19469f06203ef549c39457622d4a448c89d7ee65326cae
   keys:
   - key: |
       -----BEGIN RSA PRIVATE KEY-----
-      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
+      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
       -----END RSA PRIVATE KEY-----
   - key: |
       -----BEGIN EC PRIVATE KEY-----
-      MHcCAQEEIG/pOU0btfnpG48/D31X7h5h1vjFxQznla2B1F4c4P7yoAoGCCqGSM49
-      AwEHoUQDQgAEHCAQFBhPX4ty9fpttt/lNE0pZToTvtlCjuPYF4xvxzrWTYNPdYmh
-      HgeooEsy1e80vxi+8/0ksNapE1r2kXSajg==
+      MHcCAQEEILgUiWuhNCo8ycrS0PZqOHRd3pta4ZrAJNPyPJsK3gGOoAoGCCqGSM49
+      AwEHoUQDQgAEABCjYWIDd0Te8IzdRIiHs1O0hWl+W5TLemWUixGzlu6xo6687AYp
+      zLjd2E4gwEB4pSt2HnX/GSI3CAiL7hqGiw==
       -----END EC PRIVATE KEY-----
   - key: |
       -----BEGIN EC PRIVATE KEY-----
-      MIGkAgEBBDC+zeR7Vdx1z03F6x/VkKExH2Q2mSp+4zZxiSDW4vNsdg1VCJze+5qO
-      JdLfX0FXD0agBwYFK4EEACKhZANiAAQZlmUiZe/QwLMnskh5xhnj0tEO9pmSsNGJ
-      /qVZreDwv9JawKGYFpgHyj3CE96xtW3LkJEPLDbRCZR0FLTo9BtYnPwgHufJV8xC
-      xaCpya0aeergiibTbJ/u1+HS8bRFZqQ=
+      MIGkAgEBBDCsFh42vci0eTKbV5NpqJ38ohbaZkx85umMhM0b+1H0QAgHS7fDmd0s
+      d/OjympiC4qgBwYFK4EEACKhZANiAARaOGbgheNrrjh6U/eYBVxK7oMd2MwOH3Nq
+      gwmcbAVDU4coBxzisdYEZMSNbvxngEbfy7YqK8yIaVfwN/cIXfrGWBSEWuTRHdby
+      FXkq0uJNKPqE1Y60hx9oEtC4oD9q74A=
       -----END EC PRIVATE KEY-----
   - key: |
       -----BEGIN EC PRIVATE KEY-----
-      MHQCAQEEINsSc5XgiavrMPuzqUcAz4chQ6HEJt9FpaX5OHFqf4i/oAcGBSuBBAAK
-      oUQDQgAEuMlGCdZQlG/04io10ddOagGEGA+BasD3aiwQuAlLg2N+8d73WTPGPe0d
-      Q0OYF8EIbJvk5Hb2CqXy77cBiy4olQ==
+      MHQCAQEEIE+QJpUQ4l1t0vErDBnxPtSVSGfRPHNy6IZKD9z3hJwOoAcGBSuBBAAK
+      oUQDQgAERXIq+ZqW9CMXpk9AiJ8ZpgLnr3oQsykJouNdF7r6qXS2kL/F4wEsLtQo
+      kud0Ms7WccwS6le1TZh8SCO8pBsoDA==
       -----END EC PRIVATE KEY-----
 
 # ------------------------------
@@ -90,25 +90,25 @@ secrets:
 # ------------------------------
 
 database:
-  uri: postgresql://synapse:synapse_password@postgres:5432/mas?sslmode=disable
+  uri: postgresql://synapse:ZGm18BB68RfpXrzUJC2j@postgres:5432/mas?sslmode=disable
 
 # ------------------------------
 #  Matrix Synapse (делегирование)
 # ------------------------------
 matrix:
   kind: synapse
-  homeserver: syn.mydomain.com
-  secret: "RWiREqVkAXARyhnDVAgXvDHkHlqT1s11"
+  homeserver: syn.private-messages.space
+  secret: "1QPZW1M0MxHgK7SjNZx7"
   endpoint: http://synapse:8008
   database:
-    uri: postgresql://synapse:synapse_password@postgres:5432/synapse?sslmode=disable
+    uri: postgresql://synapse:ZGm18BB68RfpXrzUJC2j@postgres:5432/synapse?sslmode=disable
 
 clients:
   - client_id: 0000000000000000000SYNAPSE
     client_auth_method: client_secret_post
-    client_secret: RWiREqVkAXARyhnDVAgXvDHkHlqT1s11
+    client_secret: 1QPZW1M0MxHgK7SjNZx7
     redirect_uris:
-      - https://syn.mydomain.com/_synapse/client/oidc/callback
+      - https://syn.private-messages.space/_synapse/client/oidc/callback
 #
 #passwords:
 #  enabled: true

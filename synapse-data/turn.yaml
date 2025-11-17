@@ -3,6 +3,6 @@ turn_uris:
   - "turn:coturn:3478?transport=tcp"
   - "turns:coturn:5349?transport=tcp"
 
-turn_shared_secret: "strong_password_here_12345"
+turn_shared_secret: "TD8G45PzkQDVpdm8TH07"
 turn_user_lifetime: 86400000
 turn_allow_guests: true

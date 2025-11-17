@@ -7,7 +7,7 @@ rtc:
   port_range_start: 50000
   port_range_end: 50020
   use_external_ip: true
-  node_ip: "44.333.222.111"
+  node_ip: "5.129.230.96"
 
 logging:
   level: debug
@@ -19,4 +19,4 @@ room:
   auto_create: true
 
 keys:
-  111ea560574baaabbbccc9cf2f4d3111: 11122233359c0d83f836055e267255674e39f9237dd22fcc5ed444f333222111
+  LZDWiXVQb0PrA5ljlTbj: N0lwByxvfTmIMSopO1aO
