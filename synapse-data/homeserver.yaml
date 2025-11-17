@@ -1,5 +1,5 @@
-server_name: "mydomain.com"
-public_baseurl: "https://mydomain.com"
+server_name: "protected-messages.space"
+public_baseurl: "https://protected-messages.space"
 
 listeners:
   - port: 8008
@@ -22,9 +22,9 @@ listeners:
 report_stats: false
 
 # Включаем регистрацию для локальной среды. На проде выключите и используйте ручную регистрацию.
-enable_registration: true
+enable_registration: false
 # Замените значением из переменной окружения/секрета в проде
-registration_shared_secret: "please_change_me"
+registration_shared_secret: "YeW43No4hcBpneZf5OTN"
 
 allow_guest_access: false
 
@@ -61,7 +61,7 @@ database:
   name: psycopg2
   args:
     user: synapse
-    password: synapse_password
+    password: SKJns38JSd324SNK32
     database: synapse
     host: postgres
     port: 5432
@@ -72,6 +72,6 @@ database:
 trusted_key_servers:
   - server_name: "matrix.org"
 
-turn_shared_secret: "strong_password_here_12345"
+turn_shared_secret: "MKKS3329NCKJXnjwnNS3CNsj"
 turn_user_lifetime: 86400000
 turn_allow_guests: true

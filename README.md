@@ -28,7 +28,7 @@ jwt.mydomain.com - jwt server(domain)
 2) ### uncomment section with port 80 and comment others in nginx.conf
     Because of certbot we need to use port 80. In 443 sections we use paths to certs, that at that moment doesn't exist.
 3) ### create by certbot certs. 
-    ```docker-compose run --rm certbot certonly --webroot -w /var/www/certbot  -d mydomain.com -d chat.mydomain.com -d call.mydomain.com -d livekit.mydomain.com -d jwt.mydomain.com --email email@gmail.com --agree-tos --non-interactive --expand```
+    ```docker-compose run --rm certbot certonly --webroot -w /var/www/certbot  -d protected-messages.space -d chat.protected-messages.space -d call.protected-messages.space -d livekit.protected-messages.space -d jwt.protected-messages.space --email email@gmail.com --agree-tos --non-interactive --expand```
 4) ### uncomment sections with 443 in nginx.conf
 5) ### I prefer to comment certbot in docker-compose.yml 
 6) ### docker-compose up -d

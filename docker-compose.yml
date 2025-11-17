@@ -28,7 +28,7 @@ services:
     container_name: matrix-synapse
     restart: unless-stopped
     environment:
-      - SYNAPSE_SERVER_NAME=mydomain.com
+      - SYNAPSE_SERVER_NAME=protected-messages.space
       - SYNAPSE_REPORT_STATS=no
     volumes:
       - ./synapse-data:/data
@@ -48,7 +48,7 @@ services:
     environment:
       - POSTGRES_DB=synapse
       - POSTGRES_USER=synapse
-      - POSTGRES_PASSWORD=synapse_password
+      - POSTGRES_PASSWORD=SKJns38JSd324SNK32
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -77,10 +77,10 @@ services:
     environment:
       # Port the JWT service listens on internally
       - LK_JWT_PORT=8080
-      - LIVEKIT_URL=wss://mydomain.com/livekit/sfu
-      - LIVEKIT_KEY=111ea560574baaabbbccc9cf2f4d3111
-      - LIVEKIT_SECRET=11122233359c0d83f836055e267255674e39f9237dd22fcc5ed444f333222111
-      - LIVEKIT_FULL_ACCESS_HOMESERVERS=mydomain.com # server name
+      - LIVEKIT_URL=wss://protected-messages.space/livekit/sfu
+      - LIVEKIT_KEY=protected_messages_livekit_key
+      - LIVEKIT_SECRET=BHCSI73CBSH018hchIOHCN43N
+      - LIVEKIT_FULL_ACCESS_HOMESERVERS=protected-messages.space # server name
     networks:
       - matrix-net
 
