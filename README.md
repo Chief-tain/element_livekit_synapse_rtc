@@ -29,9 +29,7 @@ madmim.private-messages.space - admin server
 2) ### Temporarily enable the port 80 block in nginx.conf and disable the 443 blocks. Certbot requires port 80; the certificate paths used in the 443 blocks do not exist yet.
 3) ### Create certificates with certbot
 ```bash 
-    docker-compose run --rm certbot certonly --webroot -w /var/www/certbot  -d private-messages.space
-    -d chat.private-messages.space -d mas.private-messages.space -d madmim.private-messages.space 
-    -d jwt.private-messages.space --email email@gmail.com --agree-tos --non-interactive --expand
+    docker compose run --rm certbot certonly --webroot -w /var/www/certbot   -d private-messages.space   -d syn.private-messages.space   -d chat.private-messages.space   -d mas.private-messages.space   -d madmim.private-messages.space   -d jwt.private-messages.space   --email novorozhbitov@mail.ru --agree-tos --non-interactive --expand
 ```
 4) ### Re-enable the 443 sections in nginx.conf and point them to the obtained certificates.
 5) ### I prefer to comment certbot section in docker-compose.yml
